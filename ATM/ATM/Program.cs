@@ -17,7 +17,7 @@ namespace ATM
             var top = Application.Top;
 
             // Creates the top-level window to show
-            var win = new Window("MyApp")
+            var loginScreen = new Window("")
             {
                 X = 0,
                 Y = 0, // Leave one row for the toplevel menu
@@ -27,22 +27,7 @@ namespace ATM
                 Height = Dim.Fill()
             };
 
-            top.Add(win);
-
-            //// Creates a menubar, the item "New" has a help menu.
-            //var menu = new MenuBar(new MenuBarItem[] {
-            //    new MenuBarItem ("_File", new MenuItem [] {
-            //        new MenuItem ("_New", "Creates new file", null),
-            //        new MenuItem ("_Close", "",null),
-            //        new MenuItem ("_Quit", "", () => { if (Quit ()) top.Running = false; })
-            //    }),
-            //    new MenuBarItem ("_Edit", new MenuItem [] {
-            //        new MenuItem ("_Copy", "", null),
-            //        new MenuItem ("C_ut", "", null),
-            //        new MenuItem ("_Paste", "", null)
-            //    })
-            //});
-            //top.Add(menu);
+            top.Add(loginScreen);
 
             static bool Quit()
             {
@@ -57,15 +42,15 @@ namespace ATM
             var title5 = new Label("  / ____ \\| |  | |  | |")      {X = Pos.Left(title4), Y = Pos.Top(title4) + 1};
             var title6 = new Label(" /_/    \\_\\_|  |_|  |_|")     {X = Pos.Left(title5), Y = Pos.Top(title5) + 1};
             
-            var login = new Label("Login: ") { X = Pos.Left(title6) - 4, Y = Pos.Top(title6) + 3};
-            var password = new Label("Password: ")
+            var login = new Label("Account #: ") { X = Pos.Left(title6) - 4, Y = Pos.Top(title6) + 3};
+            var password = new Label("Pin: ")
             {
                 X = Pos.Left(login),
                 Y = Pos.Top(login) + 2
             };
             var loginText = new TextField("")
             {
-                X = Pos.Right(password),
+                X = Pos.Right(login),
                 Y = Pos.Top(login),
                 Width = 20
             };
@@ -88,7 +73,7 @@ namespace ATM
                 else
                 {
                     var n = MessageBox.Query(50, 7, "Login Error", "Your account number or password was incorret.", "OK");
-                    return n == 1;
+                    return n == 0;
                 }
             }
             var submitLogin = new Button(55, 20, "_Submit");
@@ -98,13 +83,12 @@ namespace ATM
                 loginDialog(login_name, submittedLogin, login_pass, submittedPass); 
             };
             // Add some controls, 
-            win.Add(
+            loginScreen.Add(
                 // The ones with my favorite layout system, Computed
                 title1, title2, title3, title4, title5, title6, 
                 login, password, loginText, passText,
                 submitLogin
             );
-
             Application.Run();
         }
     }
