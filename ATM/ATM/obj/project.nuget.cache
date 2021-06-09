@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "JFt+bGDU/kxLP1XzVttep8TT6ttDCaT2UrEvd54wOQee+/ynxfsb7oGIiIGgYohVMvVoqA7YV3ndIB+BuaTBQg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jeffz\\Documents\\csharp\\csharp-projects\\ATM\\ATM\\ATM.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jeffz\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "C:\\Users\\jeffz\\.nuget\\packages\\nstack.core\\0.16.0\\nstack.core.0.16.0.nupkg.sha512",
+    "C:\\Users\\jeffz\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\jeffz\\.nuget\\packages\\terminal.gui\\1.1.1\\terminal.gui.1.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

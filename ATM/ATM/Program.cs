@@ -9,7 +9,9 @@ namespace ATM
         static void Main(string[] args)
         {
             var login_name = "test";
-            var login_pass = 1234;
+            var login_pass = "1234";
+            string submittedLogin;
+            string submittedPass;
 
             Application.Init();
             var top = Application.Top;
@@ -59,7 +61,7 @@ namespace ATM
             var password = new Label("Password: ")
             {
                 X = Pos.Left(login),
-                Y = Pos.Top(login) + 1
+                Y = Pos.Top(login) + 2
             };
             var loginText = new TextField("")
             {
@@ -74,16 +76,33 @@ namespace ATM
                 Y = Pos.Top(password),
                 Width = Dim.Width(loginText)
             };
-            var submitLogin = new Button("Submit") {
-                X = Pos.Center(),
-                Y = Pos.Top(password) + 2
-            };
 
+            static bool loginDialog(string login_name, string acct, string login_pass, string pass)
+            {
+                
+                if (login_name == acct && login_pass == pass)
+                {
+                    var a = MessageBox.Query(50, 7, "Success", "You successfully logged in", "OK");
+                    return a == 0;
+                }
+                else
+                {
+                    var n = MessageBox.Query(50, 7, "Login Error", "Your account number or password was incorret.", "OK");
+                    return n == 1;
+                }
+            }
+            var submitLogin = new Button(55, 20, "_Submit");
+            submitLogin.Clicked += () => { 
+                submittedLogin = loginText.Text.ToString(); 
+                submittedPass = passText.Text.ToString();  
+                loginDialog(login_name, submittedLogin, login_pass, submittedPass); 
+            };
             // Add some controls, 
             win.Add(
                 // The ones with my favorite layout system, Computed
                 title1, title2, title3, title4, title5, title6, 
-                login, password, loginText, passText
+                login, password, loginText, passText,
+                submitLogin
             );
 
             Application.Run();
